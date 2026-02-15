@@ -1,0 +1,28 @@
+spaceport_id,name,long,lat,country_id
+0,Andøya Space Center,16.02083,69.29417,58
+1,Baikonur,63.35028,45.95515,47
+2,Cape Canaveral Air Force Station,-80.55852,28.46675,87
+3,Centre Spatial Guyanais,-52.7695,5.23739,28
+4,Jiuquan Space Center,100.29833,40.96056,15
+5,Kagoshima Space Center,131.07914,31.25186,42
+6,Kauai Test Facility,-159.785,22.02278,87
+7,Mojave Air and Space Port,-118.1488,35.0591,87
+8,NASA John F. Kennedy Space Center,-80.604,28.6082,87
+9,Naro Space Center,127.52793,34.42585,45
+10,Omelek Island,167.743083,9.048167,87
+11,Onenui Station,177.86431,-39.26044,62
+12,Pacific Spaceport Complex,-152.33931,57.43533,87
+13,Plesetsk,40.578,62.9256,72
+14,Satish Dhawan Space Center,80.2351,13.7374,40
+15,Semnan Satellite Launch Center,53.920941,35.234631,41
+16,Shahroud Missile Test Site,55.02,36.42,41
+17,Spaceport Cornwall,-4.9956,50.44056,86
+18,Taiyuan Satellite Launch Center,111.60849722,38.8490861,15
+19,Tanegashima Space Center,130.96813,30.39096,42
+20,Vandenberg Air Force Base,-120.60124,34.77204,87
+21,Vostochniy,128.333,51.883,72
+22,Wallops Flight Facility,-75.47938,37.84621,87
+23,Wenchang Space Launch Center,110.95113,19.61449167,15
+24,Xichang Space Center,102.02814,28.24646,15
+25,Yasniy site,59.85003,51.20706,72
+26,Yellow Sea Launch Area,23.7965,35.4943,15

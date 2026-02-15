@@ -1,0 +1,448 @@
+# fields.yaml
+# Единый словарь полей
+
+###### Spacecraft
+### identify
+spacecraft_id:
+  type: INTEGER
+  description: Идентификатор космического аппарата
+  definition: Номер
+  host: КА
+  object: КА
+
+primary_name_id:
+  type: INTEGER
+  description: Ссылка на номер основного (primary) названия КА name_id в таблице spacecraft_names
+  definition: Название
+  host: КА
+  object: КА
+
+spacecraft_type_id:
+  type: INTEGER
+  description: Тип КА (кубсат, разгонный блок и т.д.)
+  definition: Тип
+  host: КА
+  object: КА
+
+family_id:
+  type: INTEGER
+  description: Идентификатор семейства КА
+  definition: Номер
+  host: Семейство КА
+  object: КА
+
+### design
+mass:
+  type: REAL
+  description: Масса
+  definition: Физическая величина
+  host: КА
+  object: КА
+  units: кг
+
+model_id:
+  type: INTEGER
+  description: Идентификатор модели КА
+  definition: Номер
+  host: Модель КА
+  object: КА
+
+add_element_id:
+  type: INTEGER
+  description: Идентификатор дополнительного элемента конструкции КА
+  definition: Номер
+  host: Элемент конструкции КА
+  object: КА
+
+platform_id:
+  type: INTEGER
+  description: Идентификатор спутниковой платформы
+  definition: Номер
+  host: Спутниковая платформа
+  object: КА
+
+### delivery
+delivery_method_id:
+  type: INTEGER
+  description: Идентификатор метода доставки
+  definition: Номер
+  host: Метод доставки КА
+  object: КА
+
+launch_method_id:
+  type: INTEGER
+  description: Идентификатор способа запуска
+  definition: Номер
+  host: Метод запуска КА
+  object: КА
+
+base_spacecraft_id:
+  type: INTEGER
+  description: Идентификатор базового космического аппарата
+  definition: Номер
+  host: Базовый КА
+  object: КА
+
+### orbit
+state_orbit_id:
+  type: INTEGER
+  description: Cтатус орбитального движения
+  definition: Номер
+  host: Статус орбиты КА
+  object: КА
+
+norad_id:
+  type: INTEGER
+  description: Идентификатор КА NORAD
+  definition: Номер
+  host: NORAD КА
+  object: КА
+
+on_orbit_at:
+  type: TIMESTAMP
+  description: Дата начала наблюдения по TLE
+  definition: Дата
+  host: Орбита КА
+  object: КА
+
+decay_at:
+  type: TIMESTAMP
+  description: Дата окончания наблюдений по TLE
+  definition: Дата
+  host: Орбита КА
+  object: КА
+
+orb_center_id:
+  type: INTEGER
+  description: Идентификатор притягивающего центра орбиты КА
+  definition: Дата
+  host: Орбита КА
+  object: КА
+
+orbit_init_altitude:
+  type: REAL
+  description: Начальная высота орбиты КА по TLE
+  definition: Высота орбиты
+  host: Орбита КА
+  object: КА
+  units: км
+
+orbit_init_period:
+  type: REAL
+  description: Начальный период орбиты КА по TLE
+  definition: Период орбиты
+  host: Орбита КА
+  object: КА
+  units: минуты
+
+orbit_init_ecs:
+  type: REAL
+  description: Начальный эксцентриситет орбиты КА по TLE
+  definition: Эксцентриситет
+  host: Орбита КА
+  object: КА
+
+orbit_init_inc:
+  type: REAL
+  description: Начальное наклонение орбиты КА по TLE
+  definition: Наклонение
+  host: Орбита КА
+  object: КА
+  units: Градусы
+
+### other
+
+###### Launch
+### identify
+state_id:
+  type: INTEGER
+  description: Идентификатор статуса запуска
+  definition: Номер
+  host: Статус запуска
+  object: РН
+
+launch_id:
+  type: VARCHAR(8)
+  description: Идентификатор запуска
+  format: 
+    - yyyy-nnn, если запуск успех (Suc.)
+    - yyyy-Fnn, если запуск провал (Fail)
+    - nn = номер запуска в году yyyy
+  definition: Номер
+  host: Запуск
+  object: РН
+
+cospar_id:
+  type: INTEGER
+  description: Идентификатор КА COSPAR
+  definition: Номер
+  host: COSPAR КА
+  object: КА
+
+launch_at:
+  type: TIMESTAMP
+  description: Дата запуска
+  definition: Дата
+  host: Запуск
+  comments: В один день может быть несколько запусков
+  object: РН
+
+### spaceport
+spaceport_id:
+  type: INTEGER
+  description: Идентификатор космодрома
+  definition: Номер
+  host: Космодром
+  object: Космодром
+
+### 
+long:
+  type: REAL
+  description: Долгота
+
+lat:
+  type: REAL
+  description: Широта
+
+launch_service_id:
+  type: INTEGER
+  description: "ид сервиса запуска"
+
+organization_type_id:
+  type: INTEGER
+  description: "тип организации"
+
+program_id:
+  type: INTEGER
+  description: "ид программы"
+
+develop_country_id:
+  type: INTEGER
+  description: "ид страны разработки"
+
+
+space_rocket_link:
+  type: TEXT
+  description: "ссылка на описание в сети"
+
+nanosats_link:
+  type: TEXT
+  description: "ссылка на nanosats"
+
+link:
+  type: TEXT
+  description: "ссылка на nanosats"
+
+name_id:
+  type: INTEGER
+  description: "PK для spacecraft_names"
+
+name:
+  type: VARCHAR
+  description: "текстовое имя"
+
+purpose_id:
+  type: INTEGER
+  description: "ид цели"
+
+size:
+  type: REAL
+  description: "размер (например, габариты)"
+
+solar_panels:
+  type: INTEGER
+  description: "число солнечных панелей"
+
+
+has_hood:
+  type: BOOLEAN
+  description: "есть ли капот"
+
+has_large_antenna:
+  type: BOOLEAN
+  description: "есть ли капот"
+
+has_depl_solar_panels:
+  type: BOOLEAN
+  description: "есть ли капот"
+
+has_thruster:
+  type: BOOLEAN
+  description: "есть ли капот"
+
+has_add_mass:
+  type: BOOLEAN
+  description: "есть ли капот"
+
+has_door:
+  type: BOOLEAN
+  description: "есть ли капот"
+
+
+has_tape:
+  type: BOOLEAN
+  description: "есть ли капот"
+
+has_teather:
+  type: BOOLEAN
+  description: "есть ли капот"
+
+has_cylidner:
+  type: BOOLEAN
+  description: "есть ли капот"
+
+has_rod:
+  type: BOOLEAN
+  description: "есть ли капот"
+
+has_sail:
+  type: BOOLEAN
+  description: "есть ли капот"
+
+has_panel:
+  type: BOOLEAN
+  description: "есть ли капот"
+
+has_balloon:
+  type: BOOLEAN
+  description: "есть ли капот"
+
+has_pyramid:
+  type: BOOLEAN
+  description: "есть ли капот"
+
+
+# ... дополнительные поля, используемые в прочих таблицах
+rocket_id:
+  type: INTEGER
+  description: "ид ракетного агрегата"
+
+rocket_family_id:
+  type: INTEGER
+  description: "ид семейства ракет"
+
+country_id:
+  type: INTEGER
+  description: "ид страны"
+
+launchpad_id:
+  type: INTEGER
+  description: "ид пусковой площадки"
+
+dispenser_id:
+  type: INTEGER
+  description: "ид диспенсера"
+
+payload_id:
+  type: INTEGER
+  description: "ид полезной нагрузки"
+
+separation_method_id:
+  type: INTEGER
+  description: "ид метода отделения"
+
+
+delivery_vehicle_id:
+  type: INTEGER
+  description: "ид транспортного средства доставки"
+
+iss_relation_id:
+  type: INTEGER
+  description: "ид отношений с МКС"
+
+dispenser_name:
+  type: VARCHAR
+  description: "название диспенсера"
+
+# orbital events fields
+id:
+  type: INTEGER
+  description: "PK для orbital_events"
+
+eccentricity:
+  type: REAL
+inclination:
+  type: REAL
+mean_anomaly:
+  type: REAL
+perigee_arg:
+  type: REAL
+asend_node_long:
+  type: REAL
+mean_motion:
+  type: REAL
+mean_motion_1der:
+  type: REAL
+mean_motion_2der:
+  type: REAL
+rad_pressure_coef:
+  type: REAL
+event_at:
+  type: TIMESTAMP
+period:
+  type: REAL
+semi_major_axis:
+  type: REAL
+altitude:
+  type: REAL
+perigee_altitude:
+  type: REAL
+apogee_altitude:
+  type: REAL
+
+# generic audit fields
+created_at:
+  type: TIMESTAMP
+  description: "время создания"
+updated_at:
+  type: TIMESTAMP
+  description: "время обновления"
+
+
+
+
+
+purpose_name_en:
+  type: TEXT
+  description: "описание цели на английском"
+
+purpose_name_ru:
+  type: TEXT
+  description: "описание цели на русском"
+
+
+
+
+
+state:
+  type: VARCHAR
+  description: "статус запуска"
+
+description:
+  type: TEXT
+  description: "описание"
+
+
+
+
+organization_type_name:
+  type: VARCHAR
+  description: "название разработчика"
+
+launch_service_name:
+  type: VARCHAR
+  description: "название поставщика услуг запуска"
+
+
+country_name_en:
+  type: VARCHAR
+  description: "название страны на английском"
+
+country_name_ru:
+  type: VARCHAR
+  description: "название страны на русском"
+
+en_name_cut:
+  type: VARCHAR
+  description: "Сокращенное название страны на английском"
+

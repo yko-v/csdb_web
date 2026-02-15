@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block content %}
+<script src="{{ url_for('static', path='js/table.js') }}"></script>
+
+<script>
+async function loadMap() {
+    const response = await fetch("/api/spaceports");
+    const data = await response.json();
+
+    const map = new maplibregl.Map({
+        container: 'map',
+        style: 'https://demotiles.maplibre.org/style.json',
+        center: [0, 20],
+        zoom: 1.5
+    });
+
+    map.addControl(new maplibregl.NavigationControl());
+
+    map.on('load', () => {
+        data.rows.forEach(row => {
+            // предположим что lat и long есть в columns
+            const latIndex = data.columns.indexOf("lat");
+            const lonIndex = data.columns.indexOf("long");
+            const nameIndex = data.columns.indexOf("name");
+
+            const lat = row[latIndex];
+            const lon = row[lonIndex];
+            const name = row[nameIndex];
+
+            if (lat && lon) {
+                new maplibregl.Marker()
+                    .setLngLat([lon, lat])
+                    .setPopup(new maplibregl.Popup().setHTML(`<b>${name}</b>`))
+                    .addTo(map);
+            }
+        });
+    });
+}
+
+loadMap();
+</script>
+
+
+<h2>Космодромы</h2>
+
+
+<div class="stats">
+<!--    <div>Обновлено: {{ updated }}</div> -->
+    <div>Всего: <span id="total-count">—</span></div>
+</div>
+
+<!-- Карта -->
+<h2>Космодромы на карте</h2>
+<div id="map" style="height: 500px; margin-bottom: 30px;"></div>
+
+<script>
+    loadMap();
+    loadTable("/api/spaceports");
+
+</script>
+
+<!-- Таблица -->
+<div class="table-container">
+    <table id="data-table" class="display" style="width:100%"></table>
+</div>
+
+
+{% endblock %}
+

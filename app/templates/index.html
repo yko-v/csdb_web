@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2> <p>Описание</p>
+</h2>
+               
+                
+<div class="description">
+    <p>     
+Открытая база данных космических аппаратов формата CubeSat от лаборатории <a href="https://astronomikon.store">«Астрономикон»</a> содержит в себе информацию об основных характеристиках космических аппаратов (КА) формата CubeSat (кубсаты) и их запусках, а также актуальные и исторические орбитальные параметры. Представлена классификация по семействам, конструкции, назначению, способам выведения кубсатов.
+    </p>
+
+</div>
+
+
+
+<script>
+async function loadOverview() {
+    try {
+        const response = await fetch("/api/overview");
+        const data = await response.json();
+
+        document.getElementById("total-spacecraft").textContent = data.total_spacecraft;
+        document.getElementById("total-launches").textContent = data.total_launches;
+        document.getElementById("last-update").textContent = data.last_update;
+
+    } catch (err) {
+        console.error("Ошибка загрузки данных:", err);
+    }
+}
+
+loadOverview();
+</script>
+<div class="charts-grid">
+    {% for chart in charts %}
+        <div class="chart-card">
+            <h3>{{ chart.title }}</h3>
+            <img src="{{ chart.src }}" class="chart-img">
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
+
+
+<!--
+<div class="stats">
+    <div class="stat-card">
+        <h3 id="total-spacecraft">—</h3>
+        <p>Всего выведено на орбиту кубсатов</p>
+    </div>
+
+    <div class="stat-card">
+        <h3 id="total-launches">—</h3>
+        <p>Всего запусков</p>
+    </div>
+
+    <div class="stat-card">
+        <h3 id="last-update">—</h3>
+        <p>Последнее обновление</p>
+    </div>
+</div>
+
+<div class="chart-container">
+    <canvas id="overviewChart"></canvas>
+</div>
+-->

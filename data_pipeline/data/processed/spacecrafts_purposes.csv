@@ -1,0 +1,10 @@
+purpose_id,purpose_name_en,purpose_name_ru
+0,Art,Искусство
+1,Communication,Связь
+2,Entertainment,Развлечение
+3,Military,Военное
+4,Orbital operation,Орбитальные операции
+5,Remote sensing,ДЗЗ
+6,Science,Наука
+7,Space situational awareness,Контроль космического пространства
+8,Traffic monitoring,Мониторинг трафика

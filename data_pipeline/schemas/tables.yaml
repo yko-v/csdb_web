@@ -1,0 +1,501 @@
+# tables.yaml
+# Полная структура таблиц, с foreign_keys и индексами.
+# foreign_keys: list of {column, references: {table, column}, on_update, on_delete}
+
+spacecrafts:
+  description: "Основная таблица всех КА"
+  fields:
+    - { name: spacecraft_id, constraints: ["PRIMARY KEY"] }
+    - primary_name_id
+    - spacecraft_type_id
+    - family_id
+    - model_id
+    - add_element_id
+    - delivery_method_id
+    - mass
+    - launch_at
+    - cospar_id
+    - launch_id
+    - spaceport_id
+    - on_orbit_at
+    - norad_id
+    - state_id
+    - state_orbit_id
+    - decay_at
+    - orbit_init_altitude
+    - orbit_init_period
+    - orbit_init_ecs
+    - orbit_init_inc
+    - orb_center_id
+    - launch_method_id
+    - launch_service_id
+    - organization_type_id
+    - platform_id
+    - program_id
+    - develop_country_id
+    - base_spacecraft_id
+    - space_rocket_link
+    - nanosats_link
+  foreign_keys:
+    - column: norad_id
+      references:
+        table: orbital_events
+        column: norad_id
+      on_update: NO ACTION
+      on_delete: NO ACTION
+    - column: launch_method_id
+      references:
+        table: launch_methods
+        column: launch_method_id
+      on_update: NO ACTION
+      on_delete: NO ACTION
+    - column: organization_type_id
+      references:
+        table: organization_types
+        column: organization_type_id
+      on_update: NO ACTION
+      on_delete: NO ACTION
+    - column: spacecraft_id
+      references:
+        table: spacecraft_names
+        column: spacecraft_id
+      on_update: NO ACTION
+      on_delete: NO ACTION
+    - column: primary_name_id
+      references:
+        table: spacecraft_names
+        column: name_id
+      on_update: NO ACTION
+      on_delete: NO ACTION
+    - column: platform_id
+      references:
+        table: platforms
+        column: platform_id
+      on_update: NO ACTION
+      on_delete: NO ACTION
+    - column: program_id
+      references:
+        table: programs
+        column: program_id
+      on_update: NO ACTION
+      on_delete: NO ACTION
+  indexes:
+    - name: cospar_id_index
+      columns: [cospar_id]
+    - name: spacecrafts_index_1
+      columns: [spacecraft_type_id]
+    - name: spacecrafts_index_2
+      columns: [family_id]
+    - name: spacecrafts_index_3
+      columns: [model_id]
+    - name: spacecrafts_index_4
+      columns: [launch_at]
+    - name: spacecrafts_index_5
+      columns: [norad_id]
+    - name: spacecrafts_index_6
+      columns: [on_orbit_at]
+    - name: spacecrafts_index_7
+      columns: [orb_center_id]
+    - name: spacecrafts_index_8
+      columns: [launch_method_id]
+    - name: spacecrafts_index_9
+      columns: [decay_at]
+    - name: platform_id_index
+      columns: [platform_id]
+    - name: program_id_index
+      columns: [program_id]
+    - name: spacecrafts_index_10
+      columns: [decay_at]
+
+
+spacecraft_names:
+  description: "Имена космических аппаратов"
+  fields:
+    - name_id
+    - spacecraft_id
+    - name
+  foreign_keys:
+    - column: spacecraft_id
+      references:
+        table: spacecrafts
+        column: spacecraft_id
+  indexes:
+    - name: spacecraft_id_index
+      columns: [spacecraft_id]
+    - name: spacecraft_name_index
+      columns: [name]
+  uniques:
+    - columns: [spacecraft_id, name]
+
+
+
+spacecraft_types:
+  description: "Типы КА"
+  fields:
+    - spacecraft_type_id
+    - name
+  foreign_keys:
+    - column: spacecraft_type_id
+      references:
+        table: spacecrafts
+        column: spacecraft_type_id
+
+spacecraft_families:
+  description: "Семейства КА"
+  fields:
+    - family_id
+    - name
+    - purpose_id
+  foreign_keys:
+    - column: family_id
+      references:
+        table: spacecrafts
+        column: family_id
+  indexes:
+    - name: spacecraft_families_index_0
+      columns: [purpose_id]
+
+spacecrafts_purposes:
+  description: "Цели запуска семейства"
+  fields:
+    - purpose_id
+    - purpose_name_en
+    - purpose_name_ru
+  foreign_keys:
+    - column: purpose_id
+      references:
+        table: spacecraft_families
+        column: purpose_id
+
+spacecraft_models:
+  description: "Модели КА"
+  fields:
+    - model_id
+    - name
+    - size
+    - solar_panels
+  foreign_keys:
+    - column: model_id
+      references:
+        table: spacecrafts
+        column: model_id
+
+#solar_pannel_configs:
+#  description: "Конфигурации солнечных панелей"
+#  fields:
+#    - solar_pannel_config_id
+#    - { name: name, type: VARCHAR }
+#    - { name: description, type: TEXT }
+#  foreign_keys:
+#    - column: solar_pannel_config_id
+#      references:
+#        table: spacecraft_models
+#        column: solar_pannel_config_id
+
+add_elements:
+  description: "Дополнительные элементы"
+  fields:
+    - add_element_id
+    - has_hood
+    - has_large_antenna
+    - has_depl_solar_panels
+    - has_thruster
+    - has_add_mass
+    - has_door
+    - has_tape
+    - has_teather
+    - has_cylidner
+    - has_rod
+    - has_sail
+    - has_panel
+    - has_balloon
+    - has_pyramid
+  foreign_keys:
+    - column: add_element_id
+      references:
+        table: spacecrafts
+        column: add_element_id
+
+platforms:
+  description: "Платформы (на которых размещаются КА)"
+  fields:
+    - platform_id
+    - { name: name, type: TEXT }
+
+states:
+  description: "Справочник статусов"
+  fields:
+    - state_id
+    - state
+  foreign_keys:
+    - column: state_id
+      references:
+        table: launches
+        column: state_id
+    - column: state_id
+      references:
+        table: spacecrafts
+        column: state_id
+
+launches:
+  description: "Запуски"
+  fields:
+    - launch_id
+    - launch_at
+    - rocket_id
+    - launchpad_id
+    - state_id
+  indexes:
+    - name: launches_index_0
+      columns: [launch_at]
+    - name: launches_index_1
+      columns: [rocket_id]
+    - name: launches_index_2
+      columns: [launchpad_id]
+
+rockets:
+  description: "Ракеты"
+  fields:
+    - rocket_id
+    - name
+    - rocket_family_id
+  foreign_keys:
+    - column: rocket_id
+      references:
+        table: launches
+        column: rocket_id
+
+rocket_families:
+  description: "Семейства ракет"
+  fields:
+    - rocket_family_id
+    - name
+  foreign_keys:
+    - column: rocket_family_id
+      references:
+        table: rockets
+        column: rocket_family_id
+
+spaceports:
+  description: "Космодромы"
+  fields:
+    - spaceport_id
+    - name
+    - long
+    - lat
+    - country_id
+  foreign_keys:
+    - column: spaceport_id
+      references:
+        table: launchpads
+        column: spaceport_id
+    - column: spaceport_id
+      references:
+        table: spacecrafts
+        column: spaceport_id
+
+launchpads:
+  description: "Площадки"
+  fields:
+    - launchpad_id
+    - name
+    - spaceport_id
+    - long
+    - lat
+  foreign_keys:
+    - column: launchpad_id
+      references:
+        table: launches
+        column: launchpad_id
+  indexes:
+    - name: launchpads_index_0
+      columns: [spaceport_id]
+
+delivery_methods:
+  description: "Методы доставки"
+  fields:
+    - delivery_method_id
+    - dispenser_id
+    - payload_id
+    - delivery_vehicle_id
+    - iss_relation_id
+    - separation_method_id
+  foreign_keys:
+    - column: delivery_method_id
+      references:
+        table: spacecrafts
+        column: delivery_method_id
+
+delivery_vehicles:
+  description: "Транспортные средства доставки"
+  fields:
+    - delivery_vehicle_id
+    - name
+  foreign_keys:
+    - column: delivery_vehicle_id
+      references:
+        table: delivery_methods
+        column: delivery_vehicle_id
+  indexes:
+    - name: dispensers_index_0
+      columns: [type_id]
+
+dispensers:
+  description: "Диспенсеры"
+  fields:
+    - dispenser_id
+    - name
+  foreign_keys:
+    - column: dispenser_id
+      references:
+        table: delivery_methods
+        column: dispenser_id
+
+iss_relations:
+  description: "Отношения с МКС"
+  fields:
+    - iss_relation_id
+    - name
+  foreign_keys:
+    - column: iss_relation_id
+      references:
+        table: delivery_methods
+        column: iss_relation_id
+  indexes:
+    - name: iss_relations_index_type
+      columns: [type_id]
+
+payloads:
+  description: "Полезные нагрузки"
+  fields:
+    - payload_id
+    - name
+  foreign_keys:
+    - column: payload_id
+      references:
+        table: delivery_methods
+        column: payload_id
+  indexes:
+    - name: payloads_index_type
+      columns: [type_id]
+
+separation_methods:
+  description: "Метод отделения"
+  fields:
+    - separation_method_id
+    - name
+  foreign_keys:
+    - column: separation_method_id
+      references:
+        table: delivery_methods
+        column: separation_method_id
+  indexes:
+    - name: separation_method_index_type
+      columns: [type_id]
+
+
+base_cs:
+  description: "Базовые классы/модели КА"
+  fields:
+    - base_spacecraft_id
+    - name
+  foreign_keys:
+    - column: base_spacecraft_id
+      references:
+        table: spacecrafts
+        column: base_spacecraft_id
+
+launch_methods:
+  description: "Методы запуска"
+  fields:
+    - launch_method_id
+    - name
+
+states_orbit:
+  description: "Статусы орбиты"
+  fields:
+    - state_orbit_id
+    - name
+  foreign_keys:
+    - column: state_orbit_id
+      references:
+        table: spacecrafts
+        column: state_orbit_id
+
+orb_centers:
+  description: "Центры орбиты"
+  fields:
+    - orb_center_id
+    - name
+  foreign_keys:
+    - column: orb_center_id
+      references:
+        table: spacecrafts
+        column: orb_center_id
+
+programs:
+  description: "Программы"
+  fields:
+    - program_id
+    - name
+    - description
+    - link
+
+organization_types:
+  description: "Типы организаций"
+  fields:
+    - organization_type_id
+    - organization_type_name
+
+countries:
+  description: "Страны"
+  fields:
+    - country_id
+    - en_name_cut
+    - country_name_en
+    - country_name_ru
+  foreign_keys:
+    - column: country_id
+      references:
+        table: spacecrafts
+        column: develop_country_id
+
+launch_services:
+  description: "Сервисы запуска"
+  fields:
+    - launch_service_id
+    - launch_service_name
+  foreign_keys:
+    - column: launch_service_id
+      references:
+        table: spacecrafts
+        column: launch_service_id
+
+orbital_events:
+  description: "Орбитальные события / TLE-like"
+  fields:
+    - id
+    - norad_id
+    - eccentricity
+    - inclination
+    - mean_anomaly
+    - perigee_arg
+    - asend_node_long
+    - mean_motion
+    - mean_motion_1der
+    - mean_motion_2der
+    - rad_pressure_coef
+    - event_at
+    - period
+    - semi_major_axis
+    - altitude
+    - perigee_altitude
+    - apogee_altitude
+  indexes:
+    - name: norad_event_at_index
+      columns: [norad_id, event_at]
+    - name: event_at_index
+      columns: [event_at]
+
+
+

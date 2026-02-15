@@ -1,0 +1,56 @@
+platform_id,name
+0,Astro Digital
+1,Blue Canyon
+2,Blue Canyon ANTENNA
+3,Clyde Space
+4,Clyde Space OBSW
+5,Clyde Space THRUSTER
+6,Dhruva Space
+7,EnduroSat
+8,EnduroSat THRUSTER
+9,Exobotics BATTERY
+10,Exobotics IMAGER
+11,GUMUSH
+12,Geoscan
+13,Geoscan IMAGER
+14,German Orbital Systems
+15,GomSpace
+16,GomSpace EPS
+17,GomSpace OBC
+18,GomSpace TRANSMITTER
+19,ISIS
+20,ISIS IMAGER
+21,ISIS OBC
+22,ISIS OBSW
+23,ISIS SOLAR PANELS
+24,ISIS THRUSTER
+25,NBSPACE
+26,NEURO-MASTER
+27,NILAKT DOSAAF
+28,NanoAvionics
+29,NanoAvionics IMAGER
+30,NanoAvionics THRUSTER
+31,NearSpace Launch
+32,NuSpace
+33,NuSpace ANTENNA
+34,Open Cosmos
+35,Open Cosmos SOLAR PANELS
+36,OrbAstro
+37,Pumpkin
+38,Pumpkin THRUSTER
+39,Quub
+40,Reaktor Space
+41,Reaktor Space PAYLOAD
+42,STC
+43,Smart Satellite
+44,Space Inventor
+45,Space Inventor SOLAR PANELS
+46,Space Inventor THRUSTER
+47,Spacemanic
+48,Spire
+49,Spire IMAGER
+50,Sputnix
+51,Tyvak
+52,Tyvak THRUSTER
+53,YUZGU
+54,ZeroG Lab

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Ракеты-носители</h2>
+
+
+<div class="stats">
+<!--    <div>Обновлено: {{ updated }}</div> -->
+    <div>Всего: <span id="total-count">—</span></div>
+</div>
+
+<div class="table-container">
+    <table id="data-table"></table>
+</div>
+
+<div class="chart-container">
+    <canvas id="chart"></canvas>
+</div>
+
+<script src="{{ url_for('static', path='js/table.js') }}"></script>
+<script src="{{ url_for('static', path='js/chart.js') }}"></script>
+
+<table id="data-table" class="display" style="width:100%"></table>
+
+<script>
+    loadTable("/api/rocket_families");
+</script>
+
+
+{% endblock %}
+

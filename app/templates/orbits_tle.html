@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Орбитальные параметры (TLE)</h2>
+
+<div class="controls">
+    <input type="number" id="norad_id" placeholder="Введите NORAD ID" value="40951">
+    <select id="parameter">
+        <option value="altitude">Высота</option>
+        <option value="inclination">Наклонение</option>
+        <option value="eccentricity">Эксцентриситет</option>
+        <option value="semi_major_axis">Большая полуось</option>
+        <option value="perigee_altitude">Перигей</option>
+        <option value="apogee_altitude">Апогей</option>
+        <option value="period">Период</option>
+        <option value="mean_motion">Mean motion</option>
+    </select>
+    <button onclick="loadPlot()">Построить</button>
+</div>
+
+<div id="plot-container" style="width:100%; max-width:1200px; height:600px;"></div>
+
+<!-- Plotly JS -->
+<script src="https://cdn.plot.ly/plotly-2.30.0.min.js"></script>
+
+<script>
+async function loadPlot() {
+    const norad = document.getElementById("norad_id").value;
+    const parameter = document.getElementById("parameter").value;
+
+    if (!norad) {
+        alert("Введите NORAD ID");
+        return;
+    }
+
+    try {
+        const response = await fetch(`/api/orbits_plot_json?norad_id=${norad}&parameter=${parameter}`);
+        const figData = await response.json();
+
+        if (!figData.data || figData.data.length === 0) {
+            document.getElementById("plot-container").innerHTML = "<h3>Нет данных</h3>";
+            return;
+        }
+
+        Plotly.newPlot('plot-container', figData.data, figData.layout, {responsive:true});
+
+    } catch (err) {
+        console.error("Ошибка построения графика:", err);
+        document.getElementById("plot-container").innerHTML = "<h3>Ошибка построения графика</h3>";
+    }
+}
+</script>
+
+{% endblock %}
+

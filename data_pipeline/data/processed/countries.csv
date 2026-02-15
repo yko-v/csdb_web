@@ -1,0 +1,93 @@
+country_id,en_name_cut,country_name_en,country_name_ru,country_id
+0,AM,Armenia,Армения,0
+1,AR,Argentina,Аргентина,1
+2,AT,Austria,Австрия,2
+3,AU,Australia,Австралия,3
+4,B,Belgium,Бельгия,4
+5,BD,Bangladesh,Бангладеш,5
+6,BGN,Bulgaria,Болгария,6
+7,BH,Bahrain,Бахрейн,7
+8,BR,Brazil,Бразилия,8
+9,BT,Bhutan,Бутан,9
+10,BW,Botswana,Ботсвана,10
+11,BY,Belarus,Беларусь,11
+12,CA,Canada,Канада,12
+13,CH,Switzerland,Швейцария,13
+14,CL,Chile,Чили,14
+15,CN,China,Китай,15
+16,CO,Colombia,Колумбия,16
+17,CR,Costa Rica,Коста-Рика,17
+18,CZ,Czech Republic,Чехия,18
+19,D,Germany,Германия,19
+20,DJ,Djibouti,Джибути,20
+21,DK,Denmark,Дания,21
+22,DZ,Algeria,Алжир,22
+23,E,Spain,Испания,23
+24,EC,Ecuador,Эквадор,24
+25,EE,Estonia,Эстония,25
+26,EG,Egypt,Египет,26
+27,ET,Ethiopia,Эфиопия,27
+28,F,France,Франция,28
+29,FI,Finland,Финляндия,29
+30,GH,Ghana,Гана,30
+31,GR,Greece,Греция,31
+32,GT,Guatemala,Гватемала,32
+33,HR,Croatia,Хорватия,33
+34,HU,Hungary,Венгрия,34
+35,I,Italy,Италия,35
+36,I-ESA,Italy (ESA program),Италия (программа ESA),36
+37,ID,Indonesia,Индонезия,37
+38,IE,Ireland,Ирландия,38
+39,IL,Israel,Израиль,39
+40,IN,India,Индия,40
+41,IR,Iran,Иран,41
+42,J,Japan,Япония,42
+43,JO,Jordan,Иордания,43
+44,KE,Kenya,Кения,44
+45,KR,South Korea,Южная Корея,45
+46,KW,Kuwait,Кувейт,46
+47,KZ,Kazakhstan,Казахстан,47
+48,L,Luxembourg,Люксембург,48
+49,LK,Sri Lanka,Шри-Ланка,49
+50,LT,Lithuania,Литва,50
+51,MA,Morocco,Марокко,51
+52,MC,Monaco,Монако,52
+53,MD,Moldova,Молдова,53
+54,MN,Mongolia,Монголия,54
+55,MU,Mauritius,Маврикий,55
+56,MX,Mexico,Мексика,56
+57,MY,Malaysia,Малайзия,57
+58,N,Norway,Норвегия,58
+59,NG,Nigeria,Нигерия,59
+60,NL,Netherlands,Нидерланды,60
+61,NP,Nepal,Непал,61
+62,NZ,New Zealand,Новая Зеландия,62
+63,OM,Oman,Оман,63
+64,P,Portugal,Португалия,64
+65,PE,Peru,Перу,65
+66,PH,Philippines,Филиппины,66
+67,PK,Pakistan,Пакистан,67
+68,PL,Poland,Польша,68
+69,PR,Puerto Rico,Пуэрто-Рико,69
+70,PY,Paraguay,Парагвай,70
+71,RO,Romania,Румыния,71
+72,RU,Russia,Россия,72
+73,RW,Rwanda,Руанда,73
+74,S,Sweden,Швеция,74
+75,SA,Saudi Arabia,Саудовская Аравия,75
+76,SG,Singapore,Сингапур,76
+77,SI,Slovenia,Словения,77
+78,SK,Slovakia,Словакия,78
+79,T,Thailand,Таиланд,79
+80,TN,Tunisia,Тунис,80
+81,TR,Turkey,Турция,81
+82,TW,Taiwan,Тайвань,82
+83,UA,Ukraine,Украина,83
+84,UAE,United Arab Emirates,Объединённые Арабские Эмираты,84
+85,UG,Uganda,Уганда,85
+86,UK,United Kingdom,Великобритания,86
+87,US,United States,США,87
+88,UY,Uruguay,Уругвай,88
+89,VN,Vietnam,Вьетнам,89
+90,ZA,South Africa,Южно-Африканская Республика,90
+91,ZW,Zimbabwe,Зимбабве,91
