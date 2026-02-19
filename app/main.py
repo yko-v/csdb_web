@@ -1,4 +1,4 @@
-from api import router, pages
+from app.api import router, pages
 from pathlib import Path
 
 from fastapi import FastAPI, Request
@@ -21,6 +21,13 @@ BASE_DIR = Path(__file__).resolve().parent
 templates = Jinja2Templates(directory=str(BASE_DIR / "templates"))
 
 app.mount("/static", StaticFiles(directory=str(BASE_DIR / "static")), name="static")
+
+import os
+print("BASE_DIR:", BASE_DIR)
+print("Current working dir:", Path.cwd())
+print("Templates exist?", (BASE_DIR / "templates" / "index.html").exists())
+print("Static exist?", (BASE_DIR / "static").exists())
+
 
 @app.get("/")
 async def home(request: Request):

@@ -3,7 +3,7 @@ import pandas as pd
 import plotly.graph_objects as go
 from fastapi import APIRouter, HTTPException
 
-from db import db
+from app.db import db
 
 cursor = db.cursor
 
